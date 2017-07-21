@@ -1,10 +1,12 @@
 body{
   margin: 0;
-}
-
-canvas{
   display: flex;
   align-items: center;
-  background: #222222;
+  background: #b8beb3;
   justify-content: center;
+  height: 100vh;
+  font-family: 'Verdana';
+}
+canvas{
+  border: 5px solid #e7eee0;
 }
