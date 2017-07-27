@@ -13,31 +13,8 @@ const playerX = 70;
 const aiX = 910;
 let playerY = 200;
 let aiY = 200;
-let ballSpeedX = 1;
-let ballSpeedY = -1;
-
-function changeBallMovement(){
-  if(ballY == cHeight-16){
-    ballSpeedY = 1;
-  }
-  else if(ballY == 5){
-    ballSpeedY = 1;
-  }
-}
-
-function setStartBall(){
-  ballX = ballXStart;
-  ballX = ballYStart;
-}
-
-function collisionDetection(){
-  if(ballY == 5 || ballY == cHeight-16){
-    changeBallMovement();
-  }
-  else if(ballX == 5 || ballX == cWidth){
-    setStartBall()
-  }
-}
+let ballSpeedX = 2;
+let ballSpeedY = 2;
 
 function player(){
   ctx.fillStyle = "#00E676";
@@ -52,6 +29,13 @@ function ball(){
   ctx.fillRect(ballX, ballY, ballSize, ballSize);
   ballX += ballSpeedX;
   ballY += ballSpeedY;
+
+  if(ballY <= 0 || ballY+ballSize>= cHeight){
+    ballSpeedY= -ballSpeedY;
+  }
+  if(ballX <=0 || ballX+ballSize >= cWidth){
+    ballSpeedX= -ballSpeedX;
+  }
 }
 function table(){
   ctx.fillStyle = "#333333";
@@ -67,7 +51,6 @@ function game(){
   ball()
   player()
   ai()
-  collisionDetection()
 }
 
 setInterval(game, 16.6);
