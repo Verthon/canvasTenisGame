@@ -69,6 +69,21 @@ function playerPosition(e){
   }
 }
 
+function aiPosition(){
+  const middleAi = aiY + rHeight / 2;
+  const middleBall = BallY + ballSize / 2;
+
+  if(ballY > 500){
+
+  }
+
+  if(ballX <=500 && ballX > 150){
+    if(middleAi - middleBall > 200){
+      aiY -= 24;
+    }
+  }
+}
+
 canvas.addEventListener("mousemove", playerPosition);
 
 function game(){
