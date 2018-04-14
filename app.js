@@ -73,15 +73,17 @@ function aiPosition(){
   const middleAi = aiY + rHeight / 2;
   const middleBall = BallY + ballSize / 2;
 
-  if(ballY > 500){
-
-  }
+  if(ballY > 500)
 
   if(ballX <=500 && ballX > 150){
+
     if(middleAi - middleBall > 200){
       aiY -= 24;
+    }else if (middleAi - middleBall > 50){
+      aiY -= 10;
     }
   }
+  
 }
 
 canvas.addEventListener("mousemove", playerPosition);
