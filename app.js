@@ -17,6 +17,7 @@ let ballSpeedX = 4;
 let ballSpeedY = 4;
 let topCanvas = canvas.offsetTop;
 
+
 function player(){
   ctx.fillStyle = "#00E676";
   ctx.fillRect(playerX, playerY, rWidth, rHeight);
@@ -30,19 +31,29 @@ function ball(){
   ctx.fillRect(ballX, ballY, ballSize, ballSize);
   ballX += ballSpeedX;
   ballY += ballSpeedY;
-
+  ballCollisionWithWalls();
+  ballColisionWithPlayer();
+  BallCollisionWithAi();
+}
+function ballCollisionWithWalls(){
   if(ballY <= 0 || ballY+ballSize >= cHeight){
     ballSpeedY= -ballSpeedY;
   }
   if(ballX <=0 || ballX+ballSize >= cWidth){
     ballSpeedX= -ballSpeedX;
   }
+}
+
+function ballColisionWithPlayer() {
   if(ballX > playerX && ballX < playerX + rWidth ){
     if(ballY > playerY && ballY < playerY + rHeight){
       ballSpeedX = -ballSpeedX;
       ballSpeedY = -ballSpeedY;
     }
   }
+}
+
+function BallCollisionWithAi(){
   if(ballX > aiX && ballX < aiX + rWidth ){
     if(ballY > aiY && ballY < aiY + rHeight){
       ballSpeedX = -ballSpeedX;
@@ -50,13 +61,13 @@ function ball(){
     }
   }
 }
+
 function table(){
   ctx.fillStyle = "#333333";
   ctx.fillRect(0, 0, cWidth, cHeight);
   ctx.fillStyle = "#c0c0c0";
   for(let linePosition = 10; linePosition < cHeight; linePosition+=35){
     ctx.fillRect(496, linePosition, 5, 20);
-
   }
 }
 function playerPosition(e){
@@ -93,7 +104,6 @@ function game(){
   ball()
   player()
   ai()
-
 }
 
 setInterval(game, 16.6);
