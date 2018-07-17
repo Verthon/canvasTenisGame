@@ -80,6 +80,13 @@ function playerPosition(e){
   }
 }
 
+
+function blockPlayerY () {
+  if(playerY <= 0){
+    playerY = 0;
+  }
+}
+
 function aiPosition(){
   const middleAi = aiY + rHeight / 2;
   const middleBall = BallY + ballSize / 2;
